@@ -1,0 +1,147 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+span{
+    color:white;
+}
+.container{
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.left{
+    /* border: 1px solid red; */
+    width: 50%;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    display: grid;
+    gap:0px;
+    /* flex-direction: column; */
+
+}
+h1{
+    align-self: center;
+    
+    color: rgba(98, 69, 230, 0.915);
+}
+
+.imagead{
+    /* display: flex; */
+    justify-self: center;
+
+    align-self: center;
+    width: 50vw;
+    height: 50vh;
+}
+.right{
+    /* border:1px solid blue; */
+    width: 50%;
+    background-color: #575A85;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.para{
+    font-size: 1.4rem;
+    margin: 0px;
+    color:#B8BCCC80;
+}
+#nextpage{
+    margin-top: 1rem;
+    background-color: inherit;
+    border: 1px solid #b2b2b5;
+    padding: 0.7rem;
+    color: rgb(174, 173, 173);
+    font-size: large;
+    border-radius: 0.7rem;
+    letter-spacing:0.1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.top{
+    /* border: 1px solid red; */
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+.inside-top{
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+}
+.three-div{
+    /* border: 2px solid green; */
+    width: calc(33.33% - 0px);
+}
+
+.map-div{
+    background-color: #575A85;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+.map{
+    border: 1px solid rgb(244, 43, 12);
+    width: 80vw;
+    height: 60vh;
+}
+.more-info{
+    /* border: 2px solid blue; */
+    padding: 1.4rem;
+}
+.more-details{
+    margin-top: 2rem;
+    /* border: 2px solid blue; */
+
+}
+.color{
+    color: #B8BCCC80;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
+.post{
+    padding: 1.4rem;
+    
+}
+#post-name{
+    margin-top: 1.4rem;
+    font-size: 1rem;
+    background-color: inherit;
+    border: 1px solid rgba(193, 192, 192, 0.929);
+    width:95vw ;
+    padding: 8px;
+    border-radius: 7px;
+    color: white;
+}
+.post-offices{
+    margin-top: 2rem;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* flex-direction: row; */
+    gap: 10px;
+    
+}
+.post1{
+    /* border: 1px solid yellow; */
+    
+    margin-bottom: 1.4rem;
+    color: #c7cbda;
+    background-color: #686b9adc;
+    padding: 1.4rem;
+    font-size: 1rem;
+}
