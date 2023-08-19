@@ -7,6 +7,8 @@ const map = document.getElementsByClassName("map")[0];
 const time = document.getElementById("time");
 const datetime = document.getElementById("date-time");
 const pincode = document.getElementById("pincode");
+const msg = document.getElementById("msg");
+const postoffices = document.getElementsByClassName("post-offices")[0];
 
 const ip = document.getElementById("ownIP");
 
@@ -39,8 +41,31 @@ async function fetchAPIDetails(IPAddress){
                         frameborder="0" style="border:0"
                         src="https://www.google.com/maps?q=${str[0]},${str[1]}&output=embed" allowfullscreen>
                     </iframe>`;
-    // getOtherPostOffice(result.postal);
+    getOtherPostOffice(result.postal);
 }
+
+async function getOtherPostOffice(pincode){
+    const url = `https://api.postalpincode.in/pincode/${pincode}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    console.log(result);
+    msg.innerHTML = `${result[0].Message}`
+    const posts = result[0].PostOffice;
+    posts.forEach((value)=>{
+        const post1 = document.createElement('div');
+        post1.innerHTML = `<p>Name : <span>${value.Name}</span></p>
+                            <p>Branch Type : <span>${value.BranchType}</span></p>
+                            <p>Delivery Status : <span>${value.DeliveryStatus}</span></p>
+                            <p>District : <span>${value.District}</span></p>
+                            <p>Division : <span>${value.Division}</span></p>`;
+        post1.className="post1";
+        postoffices.appendChild(post1);
+    })
+}
+
+
+
+
 
 function getRealTime(targetTimezone){
 // const targetTimezone = 'America/New_York';
