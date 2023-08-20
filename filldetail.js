@@ -9,6 +9,10 @@ const datetime = document.getElementById("date-time");
 const pincode = document.getElementById("pincode");
 const msg = document.getElementById("msg");
 const postoffices = document.getElementsByClassName("post-offices")[0];
+const postname = document.getElementById("post-name");
+
+
+
 
 const ip = document.getElementById("ownIP");
 
@@ -32,8 +36,9 @@ async function fetchAPIDetails(IPAddress){
     region.innerHTML=`${result.region}`
     org.innerHTML=`${result.org}`
     time.innerHTML = `${result.timezone}`;
-    const timevalue = getRealTime(result.timezone);
-    datetime.innerHTML = `${timevalue[1]} ${timevalue[0]}`;
+    const date = new Date();
+    // const timevalue = getRealTime(result.timezone);
+    datetime.innerHTML = `${date.toLocaleDateString()} , ${date.toLocaleTimeString()}`;
     pincode.innerHTML = `${result.postal}`;
     map.innerHTML=`<iframe
                         width="100%"
@@ -48,7 +53,7 @@ async function getOtherPostOffice(pincode){
     const url = `https://api.postalpincode.in/pincode/${pincode}`;
     const response = await fetch(url);
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     msg.innerHTML = `${result[0].Message}`
     const posts = result[0].PostOffice;
     posts.forEach((value)=>{
@@ -62,6 +67,55 @@ async function getOtherPostOffice(pincode){
         postoffices.appendChild(post1);
     })
 }
+async function getSearchResult(pincode){
+    const url = `https://api.postalpincode.in/pincode/${pincode}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    // console.log(result);
+    return result[0].PostOffice;
+}
+
+postname.addEventListener("keyup",()=>{
+    console.log(postname.value);
+    const res= postname.value;
+    const pro = getSearchResult(pincode.innerHTML);
+    pro.then(data=>{
+        // console.log(data);
+        postoffices.innerHTML="";
+        data.forEach(value=>{
+            const name = value.Name;
+            // console.log(value.Name);
+            // console.log(name.toLowerCase().includes(res.toLowerCase()));
+            if(name.toLowerCase().includes(res.toLowerCase())){
+                const post1 = document.createElement('div');
+                post1.innerHTML = `<p>Name : <span>${value.Name}</span></p>
+                                    <p>Branch Type : <span>${value.BranchType}</span></p>
+                                    <p>Delivery Status : <span>${value.DeliveryStatus}</span></p>
+                                    <p>District : <span>${value.District}</span></p>
+                                    <p>Division : <span>${value.Division}</span></p>`;
+                post1.className="post1";
+                postoffices.appendChild(post1);
+            }
+        })
+    })
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

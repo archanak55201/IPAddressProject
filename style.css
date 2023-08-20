@@ -12,6 +12,7 @@ span{
     display: flex;
     flex-direction: row;
     height: 100vh;
+    
 }
 .left{
     /* border: 1px solid red; */
@@ -27,7 +28,7 @@ span{
 h1{
     align-self: center;
     
-    color: rgba(98, 69, 230, 0.915);
+    color:  #575A85;
 }
 
 .imagead{
@@ -145,4 +146,10 @@ h1{
     padding: 1.4rem;
     font-size: 1rem;
     border-radius: 10px;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
 }
