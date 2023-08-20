@@ -3,8 +3,8 @@ const ip = document.getElementById("ownIP");
 $.get('https://ipinfo.io/json?token=dd07e6570548c8',function(response){
         console.log(response.ip);
         ip.innerHTML = `${response.ip}`;
-        console.log(ip.textContent);
-        // fetchAPIDetails(response.ip);
+        // console.log(ip.textContent);
+        
     },"json");
 
 const button = document.getElementById("nextpage");
