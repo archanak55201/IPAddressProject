@@ -26,7 +26,7 @@ async function fetchAPIDetails(IPAddress){
     const headers = { Authorization:`Bearer ${token}`}
     const response = await fetch(url,{headers:headers});
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     const arr = result.loc;
     let str = arr.split(',');
     console.log(str[0],str[1]);
@@ -37,7 +37,7 @@ async function fetchAPIDetails(IPAddress){
     org.innerHTML=`${result.org}`
     time.innerHTML = `${result.timezone}`;
     const date = new Date();
-    // const timevalue = getRealTime(result.timezone);
+    
     datetime.innerHTML = `${date.toLocaleDateString()} , ${date.toLocaleTimeString()}`;
     pincode.innerHTML = `${result.postal}`;
     map.innerHTML=`<iframe
@@ -76,7 +76,7 @@ async function getSearchResult(pincode){
 }
 
 postname.addEventListener("keyup",()=>{
-    console.log(postname.value);
+    //console.log(postname.value);
     const res= postname.value;
     const pro = getSearchResult(pincode.innerHTML);
     pro.then(data=>{
@@ -121,15 +121,5 @@ postname.addEventListener("keyup",()=>{
 
 
 
-function getRealTime(targetTimezone){
-// const targetTimezone = 'America/New_York';
-const currentUtcTime = new Date();
-const targetTime = new Date(currentUtcTime.toLocaleString('en-US', { timeZone: targetTimezone }));
-
-const formattedTime = targetTime.toLocaleTimeString('en-US', { timeZone: targetTimezone, timeStyle: 'medium' });
-const date = targetTime.toLocaleDateString();
-console.log(`Current time in ${targetTimezone}: ${formattedTime} ${date}`);
-return [formattedTime,date];
-}
 
 
